@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Denisevich_MailSender.SupportClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,12 +12,9 @@ namespace Denisevich_MailSender
 {
     public class EmailSendServiceClass
     {
-        public EmailSendServiceClass()
-        {
-
-        }
+        public EmailSendServiceClass() {}
         /// <summary>
-        /// 
+        /// Метод отправки писем
         /// </summary>
         /// <param name="mailSender">Почта отправителя</param>
         /// <param name="addressList">Список рассылки</param>
@@ -53,8 +51,6 @@ namespace Denisevich_MailSender
             }
             catch ( Exception error )
             {
-                //MessageBox.Show( error.Message, MyConst.ErrorMessage, MessageBoxButton.OK,
-                //    MessageBoxImage.Error );
                 return (false, error.Message);
             }
             return (true, MyConst.Success);

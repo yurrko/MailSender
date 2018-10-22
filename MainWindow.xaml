@@ -17,7 +17,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.15*"></RowDefinition>
                         <RowDefinition Height="0.7*"></RowDefinition>
-                        <RowDefinition Height="0.05*"></RowDefinition>
+                        <RowDefinition Height="0.1*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.05*"></ColumnDefinition>
@@ -31,7 +31,8 @@
                         <WrapPanel HorizontalAlignment="Center" 
                                     VerticalAlignment="Center">
                             <WrapPanel Orientation="Vertical"
-                                   HorizontalAlignment="Center">
+                                   HorizontalAlignment="Center"
+                                       Margin="0 0 100 0">
                                 <Label Content="Имя пользователя" 
                                VerticalAlignment="Top" 
                                Height="30" 
@@ -72,26 +73,19 @@
                     <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
                         <DockPanel DockPanel.Dock="Top">
                             <Label Content="Тема письма"></Label>
-                            <TextBox HorizontalAlignment="Stretch"/>
+                            <TextBox x:Name="TextBoxMailSubject" HorizontalAlignment="Stretch"
+                                     Height="20" />
                         </DockPanel>
                         <Label Content="Содержание письма" 
                                DockPanel.Dock="Top"></Label>
-                        <TextBox DockPanel.Dock="Top"/>
-                        <!--<WrapPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                            <Label Content="Тема письма"></Label>
-                            <TextBlock VerticalAlignment="Stretch"/>
-                        </WrapPanel>
-                        <WrapPanel Orientation="Vertical">
-                            <Label Content="Содержание письма"></Label>
-                            <TextBlock></TextBlock>
-                        </WrapPanel>-->
+                        <TextBox x:Name="TextBoxMailBody" DockPanel.Dock="Top"/>
                     </DockPanel>
 
                     <Button Content="Отправить"
                             Grid.Row="2"
                             Grid.Column="1"
                             Height="20" 
-                            VerticalAlignment="Top" 
+                            VerticalAlignment="Center" 
                             Click="SendButton_OnClick"
                             Width="150"/>
                 </Grid>

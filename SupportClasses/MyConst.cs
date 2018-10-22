@@ -6,7 +6,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Denisevich_MailSender
+namespace Denisevich_MailSender.SupportClasses
 {
     public static class MyConst
     {

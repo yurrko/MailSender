@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Denisevich_MailSender.SupportClasses;
+using System;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
@@ -20,9 +21,12 @@ namespace Denisevich_MailSender
         private void SendButton_OnClick( object sender, RoutedEventArgs e )
         {
 
+            var subject = string.IsNullOrWhiteSpace( TextBoxMailSubject.Text ) ? MyConst.MailSubject : TextBoxMailSubject.Text.ToString();
+            var mailBody = string.IsNullOrWhiteSpace( TextBoxMailBody.Text ) ? MyConst.MailBody : TextBoxMailBody.Text.ToString();
+
             var res = mailer.SendMailMessage( MyConst.MailSender, MyConst.AddressList,
                 MyConst.Yandex.SmtpServer, MyConst.Yandex.Port,
-                MyConst.MailSubject, MyConst.MailBody,
+                subject, mailBody,
                 UserName_TextBox.Text, Password_PasswordBox.SecurePassword );
 
             if ( res.Item1 )

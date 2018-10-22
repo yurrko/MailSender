@@ -55,14 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppConfigClass.cs" />
-    <Compile Include="DBClass.cs" />
-    <Compile Include="EmailSendServiceClass.cs" />
+    <Compile Include="SupportClasses\AppConfigClass.cs" />
+    <Compile Include="SupportClasses\DBClass.cs" />
+    <Compile Include="SupportClasses\EmailSendServiceClass.cs" />
     <Compile Include="ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyConst.cs" />
-    <Compile Include="SchedulerClass.cs" />
+    <Compile Include="SupportClasses\MyConst.cs" />
+    <Compile Include="SupportClasses\SchedulerClass.cs" />
     <Compile Include="SendCompleteDialog.xaml.cs">
       <DependentUpon>SendCompleteDialog.xaml</DependentUpon>
     </Compile>
@@ -87,7 +87,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\DavesGlossyControls\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\ShinyBlue\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\WhistlerBlue\Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
