@@ -13,48 +13,88 @@
         </Menu>
         <TabControl>
             <TabItem Header="Формирование группы рассылки">
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal">
-                        <WrapPanel Orientation="Vertical" VerticalAlignment="Top">
-                            <Label Content="Имя пользователя" 
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"></RowDefinition>
+                        <RowDefinition Height="0.7*"></RowDefinition>
+                        <RowDefinition Height="0.05*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" 
+                                Grid.Row="0"
+                                Grid.Column="1">
+                        <WrapPanel HorizontalAlignment="Center" 
+                                    VerticalAlignment="Center">
+                            <WrapPanel Orientation="Vertical"
+                                   HorizontalAlignment="Center">
+                                <Label Content="Имя пользователя" 
                                VerticalAlignment="Top" 
                                Height="30" 
                                HorizontalAlignment="Left" 
                                Width="150"/>
-                            <TextBox Name="UserName_TextBox" 
+                                <TextBox Name="UserName_TextBox" 
                                  HorizontalAlignment="Left" 
                                  Height="20" 
                                  TextWrapping="Wrap" 
                                  VerticalAlignment="Top" 
                                  Width="150"/>
-                        </WrapPanel>
-                        <WrapPanel Orientation="Vertical">
-                            <TextBlock TextWrapping="Wrap" 
+                            </WrapPanel>
+                            <WrapPanel Orientation="Vertical">
+                                <TextBlock TextWrapping="Wrap" 
                                    Text="Пароль" 
-                                   VerticalAlignment="Top" 
+                                   VerticalAlignment="Center" 
                                    Height="30">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="Blue"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <PasswordBox Name="Password_PasswordBox" 
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" 
+                                                        Value="Blue"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <PasswordBox Name="Password_PasswordBox" 
                                      VerticalAlignment="Top"
                                      Width="150"
                                      Height="20"/>
+                            </WrapPanel>
                         </WrapPanel>
                     </StackPanel>
-                        <Button Content="Отправить" 
+
+                    <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
+                        <DockPanel DockPanel.Dock="Top">
+                            <Label Content="Тема письма"></Label>
+                            <TextBox HorizontalAlignment="Stretch"/>
+                        </DockPanel>
+                        <Label Content="Содержание письма" 
+                               DockPanel.Dock="Top"></Label>
+                        <TextBox DockPanel.Dock="Top"/>
+                        <!--<WrapPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Label Content="Тема письма"></Label>
+                            <TextBlock VerticalAlignment="Stretch"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <Label Content="Содержание письма"></Label>
+                            <TextBlock></TextBlock>
+                        </WrapPanel>-->
+                    </DockPanel>
+
+                    <Button Content="Отправить"
+                            Grid.Row="2"
+                            Grid.Column="1"
                             Height="20" 
                             VerticalAlignment="Top" 
-                            Click="SendButton_OnClick"/>
-                </StackPanel>
+                            Click="SendButton_OnClick"
+                            Width="150"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Планировщик"></TabItem>
             <TabItem Header="Редактор писем"></TabItem>

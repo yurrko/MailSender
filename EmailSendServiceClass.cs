@@ -20,6 +20,8 @@ namespace Denisevich_MailSender
         /// </summary>
         /// <param name="mailSender">Почта отправителя</param>
         /// <param name="addressList">Список рассылки</param>
+        /// <param name="mailSubject">Тема письма</param>
+        /// <param name="mailBody">Сожержание письма</param>
         /// <param name="smtpServer">Smtp сервер</param>
         /// <param name="smtpPort">Порт Smtp сервера</param>
         /// <param name="login">Логин</param>
@@ -27,18 +29,19 @@ namespace Denisevich_MailSender
         /// <returns></returns>
         public (bool, string) SendMailMessage( string mailSender, IEnumerable<string> addressList,
             string smtpServer, int smtpPort,
+            string mailSubject, string mailBody,
             string login, System.Security.SecureString password )
         {
             try
             {
                 foreach ( var address in addressList )
                 {
-                    using ( var email = new MailMessage( MyConst.MailSender, address ) )
+                    using ( var email = new MailMessage( mailSender, address ) )
                     {
-                        email.Subject = MyConst.MailSubject;
-                        email.Body = MyConst.MailBody;
+                        email.Subject = mailSubject;
+                        email.Body = mailBody;
 
-                        using ( var client = new SmtpClient( MyConst.Yandex.SmtpServer, MyConst.Yandex.Port ) )
+                        using ( var client = new SmtpClient( smtpServer, smtpPort ) )
                         {
                             client.Credentials = new NetworkCredential( login, password );
                             client.EnableSsl = true;
@@ -50,8 +53,8 @@ namespace Denisevich_MailSender
             }
             catch ( Exception error )
             {
-                MessageBox.Show( error.Message, MyConst.ErrorMessage, MessageBoxButton.OK,
-                    MessageBoxImage.Error );
+                //MessageBox.Show( error.Message, MyConst.ErrorMessage, MessageBoxButton.OK,
+                //    MessageBoxImage.Error );
                 return (false, error.Message);
             }
             return (true, MyConst.Success);

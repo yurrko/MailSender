@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Denisevich_MailSender"
         mc:Ignorable="d"
-        Title="ErrorWindow" Height="450" Width="800">
+        Title="ErrorWindow" Height="300" Width="600">
     <Grid>
         <StackPanel>
-            <TextBlock></TextBlock>
-        </StackPanel>
-        <Button HorizontalAlignment="Center" 
+            <TextBlock x:Name="ErrorMessageTextBlock"
+                       Margin="50 20 50 20"
+                       Height="200" 
+                       FontSize="16" 
+                       Foreground="Red"></TextBlock>
+            <Button HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
                 Width="100"
                 Height="20"
-                Content="Ok"></Button>
+                Content="Ok" Click="Button_Click_OK_Event"></Button>
+        </StackPanel>
     </Grid>
 </Window>

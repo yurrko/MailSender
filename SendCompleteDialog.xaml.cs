@@ -19,7 +19,11 @@ namespace Denisevich_MailSender
     /// </summary>
     public partial class SendCompleteDialog : Window
     {
-        public SendCompleteDialog() => InitializeComponent();
+        public SendCompleteDialog(string message)
+        {
+            InitializeComponent();
+            LabelMessageSendResult.Content = message;
+        }
 
         private void OkButton_OnClick( object sender, RoutedEventArgs e )
         {

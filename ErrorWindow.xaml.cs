@@ -19,9 +19,18 @@ namespace Denisevich_MailSender
     /// </summary>
     public partial class ErrorWindow : Window
     {
-        public ErrorWindow()
+        private string Message { get; set; }
+
+        public ErrorWindow(string message)
         {
             InitializeComponent();
+            ErrorMessageTextBlock.Text = message;
+            Title = MyConst.ErrorMessage;
+        }
+
+        private void Button_Click_OK_Event( object sender, RoutedEventArgs e )
+        {
+            Close();
         }
     }
 }
