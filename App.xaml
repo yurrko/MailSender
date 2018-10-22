@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/ShinyBlue/Theme.xaml"/>
+                <ResourceDictionary Source="Themes/WhistlerBlue/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="Label">
