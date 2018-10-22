@@ -1,0 +1,19 @@
+﻿<Window x:Class="Denisevich_MailSender.SendCompleteDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Denisevich_MailSender"
+        mc:Ignorable="d"
+        Title="SendCompleteDialog" Height="250" Width="500" 
+        ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Почта отправлена" Margin="185,74,207.6,0" Height="26" VerticalAlignment="Top" >
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Button Content="Ok" Margin="225,0,208,50" VerticalAlignment="Bottom" Click="OkButton_OnClick"/>
+
+    </Grid>
+</Window>

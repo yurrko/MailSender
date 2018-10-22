@@ -6,7 +6,59 @@
         xmlns:local="clr-namespace:Denisevich_MailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл"></MenuItem>
+            <MenuItem Header="Помощь"></MenuItem>
+        </Menu>
+        <TabControl>
+            <TabItem Header="Формирование группы рассылки">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <WrapPanel Orientation="Vertical" VerticalAlignment="Top">
+                            <Label Content="Имя пользователя" 
+                               VerticalAlignment="Top" 
+                               Height="30" 
+                               HorizontalAlignment="Left" 
+                               Width="150"/>
+                            <TextBox Name="UserName_TextBox" 
+                                 HorizontalAlignment="Left" 
+                                 Height="20" 
+                                 TextWrapping="Wrap" 
+                                 VerticalAlignment="Top" 
+                                 Width="150"/>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Vertical">
+                            <TextBlock TextWrapping="Wrap" 
+                                   Text="Пароль" 
+                                   VerticalAlignment="Top" 
+                                   Height="30">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Blue"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <PasswordBox Name="Password_PasswordBox" 
+                                     VerticalAlignment="Top"
+                                     Width="150"
+                                     Height="20"/>
+                        </WrapPanel>
+                    </StackPanel>
+                        <Button Content="Отправить" 
+                            Height="20" 
+                            VerticalAlignment="Top" 
+                            Click="SendButton_OnClick"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Редактор писем"></TabItem>
+            <TabItem Header="Статистика"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
