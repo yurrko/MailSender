@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Denisevich_MailSender.SupportClasses
 {
-    public class DBClass
+    public class DbClass
     {
     }
 }

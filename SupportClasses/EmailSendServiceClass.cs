@@ -1,18 +1,12 @@
-﻿using Denisevich_MailSender.SupportClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
-namespace Denisevich_MailSender
+namespace Denisevich_MailSender.SupportClasses
 {
     public class EmailSendServiceClass
     {
-        public EmailSendServiceClass() {}
         /// <summary>
         /// Метод отправки писем
         /// </summary>
