@@ -35,37 +35,26 @@
                                        Margin="0 0 100 0">
                                 <Label Content="Имя пользователя" 
                                VerticalAlignment="Top" 
-                               Height="30" 
                                HorizontalAlignment="Left" 
+                               Height="25"
                                Width="150"/>
-                                <TextBox Name="UserName_TextBox" 
-                                 HorizontalAlignment="Left" 
-                                 Height="20" 
-                                 TextWrapping="Wrap" 
-                                 VerticalAlignment="Top" 
-                                 Width="150"/>
+                                <TextBox Name="UserNameTextBox" 
+                                         Padding="0"
+                                        HorizontalAlignment="Left" 
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Top" 
+                                        Width="150"/>  
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical">
                                 <TextBlock TextWrapping="Wrap" 
-                                   Text="Пароль" 
-                                   VerticalAlignment="Center" 
-                                   Height="30">
-                                    <TextBlock.Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="Foreground" Value="Red"/>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" 
-                                                        Value="Blue"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBlock.Style>
+                                           Text="Пароль"
+                                           Height="25" 
+                                           VerticalAlignment="Center">
                                 </TextBlock>
-                                <PasswordBox Name="Password_PasswordBox" 
+                                <PasswordBox 
+                                    Name="PasswordPasswordBox" 
                                      VerticalAlignment="Top"
-                                     Width="150"
-                                     Height="20"/>
+                                     Width="150"/>
                             </WrapPanel>
                         </WrapPanel>
                     </StackPanel>
@@ -73,8 +62,9 @@
                     <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
                         <DockPanel DockPanel.Dock="Top">
                             <Label Content="Тема письма"></Label>
-                            <TextBox x:Name="TextBoxMailSubject" HorizontalAlignment="Stretch"
-                                     Height="20" />
+                            <TextBox x:Name="TextBoxMailSubject"
+                                     HorizontalAlignment="Stretch"
+                                     Padding="0" />
                         </DockPanel>
                         <Label Content="Содержание письма" 
                                DockPanel.Dock="Top"></Label>
@@ -82,9 +72,9 @@
                     </DockPanel>
 
                     <Button Content="Отправить"
+                            Margin="0 3"
                             Grid.Row="2"
                             Grid.Column="1"
-                            Height="20" 
                             VerticalAlignment="Center" 
                             Click="SendButton_OnClick"
                             Width="150"/>

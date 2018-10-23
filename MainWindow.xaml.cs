@@ -27,7 +27,7 @@ namespace Denisevich_MailSender
             var res = mailer.SendMailMessage( MyConst.MailSender, MyConst.AddressList,
                 MyConst.Yandex.SmtpServer, MyConst.Yandex.Port,
                 subject, mailBody,
-                UserName_TextBox.Text, Password_PasswordBox.SecurePassword );
+                UserNameTextBox.Text, PasswordPasswordBox.SecurePassword );
 
             if ( res.Item1 )
             {
