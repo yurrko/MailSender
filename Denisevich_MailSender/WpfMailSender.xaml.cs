@@ -1,4 +1,5 @@
-﻿using SupportClasses;
+﻿using MailSendLibrary;
+using SupportClasses;
 using System;
 using System.Linq;
 using System.Net;
@@ -17,31 +18,6 @@ namespace Denisevich_MailSender
         {
             InitializeComponent();
         }
-
-        //private void SendButton_OnClick( object sender, RoutedEventArgs e )
-        //{
-
-        //    var subject = string.IsNullOrWhiteSpace( TextBoxMailSubject.Text ) ? MyConst.MailSubject : TextBoxMailSubject.Text.ToString();
-        //    var mailBody = string.IsNullOrWhiteSpace( TextBoxMailBody.Text ) ? MyConst.MailBody : TextBoxMailBody.Text.ToString();
-
-        //    try
-        //    {
-
-        //        mailer.SendMailMessage( MyConst.MailSender, MyConst.AddressList,
-        //                                MyConst.Yandex.SmtpServer, MyConst.Yandex.Port,
-        //                                subject, mailBody, UserNameTextBox.Text,
-        //                                PasswordPasswordBox.SecurePassword );
-        //    }
-        //    catch ( Exception res )
-        //    {
-
-        //        var errorWindow = new ErrorWindow( res.Message )
-        //        {
-        //            Owner = this,
-        //        };
-        //        errorWindow.ShowDialog();
-        //    }
-        //}
 
         private void OnExitClick( object Sender, RoutedEventArgs E )
         {
@@ -76,7 +52,8 @@ namespace Denisevich_MailSender
                     MainTabControl.SelectedIndex = 2;
                     throw new NullReferenceException( "Текст письма пуст" );
                 }
-                var emailSender = new EmailSendServiceClass( login, password, customSmtpClient );
+
+                var emailSender = new EmailSendService( login, password, customSmtpClient, "", "" );
                 emailSender.SendMailMessages( (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
             }
             catch ( Exception ex )
@@ -107,10 +84,11 @@ namespace Denisevich_MailSender
                 return;
             }
 
-            EmailSendServiceClass emailSender = new EmailSendServiceClass(
+            EmailSendService emailSender = new EmailSendService(
                 (cbSenderSelect.SelectedValue as Sender)?.Email,
                 (cbSenderSelect.SelectedValue as Sender)?.Password,
-                (cbMailServerSelect.SelectedValue as CustomSmtpClient)
+                (cbMailServerSelect.SelectedValue as CustomSmtpClient),
+                "",""
                 );
 
             sc.SendEmails( dtSendDateTime, emailSender, (IQueryable<Recepient>)DataGridRecepients.ItemsSource );

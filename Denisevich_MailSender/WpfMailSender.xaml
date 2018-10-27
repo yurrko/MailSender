@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Denisevich_MailSender"
+        xmlns:a="clr-namespace:MailSendLibrary;assembly=MailSendLibrary"
         xmlns:s="clr-namespace:SupportClasses;assembly=SupportClasses"
         xmlns:w="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
@@ -39,7 +40,7 @@
                                        VerticalAlignment="Center" 
                                        Margin="0,0,3,0"/>
                             <ComboBox Width="150"
-                                      ItemsSource="{x:Static s:Senders.Items}"
+                                      ItemsSource="{x:Static a:Senders.Items}"
                                       SelectedIndex="0"
                                       Name="cbSenderSelect">
                                 <ComboBox.ItemTemplate>
@@ -74,7 +75,7 @@
                                        Margin="0,0,3,0"/>
                             <ComboBox Width="150"
                                       Name="cbMailServerSelect"
-                                      ItemsSource="{x:Static s:MailServers.Servers}"
+                                      ItemsSource="{x:Static a:MailServers.Servers}"
                                       DisplayMemberPath="Name"
                                       SelectedIndex="0"/>
                             <Button ToolTip="Добавить">
@@ -148,8 +149,7 @@
                         <Calendar SelectionMode="MultipleRange"
                                   Name="cldSchedulDateTimes"/>
                         <TextBlock Text="Время"/>
-                        <TextBox Name="tbTimePicker"/>
-                        <w:TimePicker></w:TimePicker>
+                        <w:TimePicker Name="tbTimePicker"></w:TimePicker>
                         <Button Content="Запланировать"
                                 Click="Button_Click_Send_Later"/>
                         <Button
@@ -162,7 +162,6 @@
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="Список расписания">
                         <ItemsControl/>
-                        <!--<ContentControl/>-->
                     </GroupBox>
                 </Grid>
             </TabItem>

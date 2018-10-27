@@ -1,7 +1,7 @@
 ﻿using PasswordLib;
 using System.Collections.ObjectModel;
 
-namespace SupportClasses
+namespace MailSendLibrary
 {
     public class Senders
     {

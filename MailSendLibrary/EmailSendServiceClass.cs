@@ -3,9 +3,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 
-namespace SupportClasses
+namespace MailSendLibrary
 {
-    public class EmailSendServiceClass
+    public class EmailSendService
     {
         private string _login;
         private string _password;
@@ -14,9 +14,10 @@ namespace SupportClasses
         private string _smtpServer;
         private int _smtpPort;
 
-        public EmailSendServiceClass( string login, string password, CustomSmtpClient server )
+        public EmailSendService( string login, string password, CustomSmtpClient server, string body, string subject )
         {
-            (_login, _password, _smtpServer, _smtpPort) = (login, password, server.SmtpServer, server.Port);
+            (_login, _password, _smtpServer, _smtpPort, _body, _subject) =
+                (login, password, server.SmtpServer, server.Port, body, subject);
         }
 
         public void SendMailMessage( string address )
@@ -43,7 +44,7 @@ namespace SupportClasses
             }
             catch ( Exception error )
             {
-                throw new InvalidOperationException( String.Concat( MyConst.ErrorMessage, " ", error.Message ) );
+                throw new InvalidOperationException( String.Concat( "Произошла ошибка", " ", error.Message ) );
             }
         }
 

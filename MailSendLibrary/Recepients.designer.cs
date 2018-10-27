@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SupportClasses
+namespace MailSendLibrary
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -36,7 +36,7 @@ namespace SupportClasses
     #endregion
 		
 		public RecepientsDataContext() : 
-				base(global::SupportClasses.Properties.Settings.Default.SpamBaseConnectionString, mappingSource)
+				base(global::MailSendLibrary.Properties.Settings.Default.SpamBaseConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

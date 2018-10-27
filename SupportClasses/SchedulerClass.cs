@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MailSendLibrary;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
@@ -13,7 +14,7 @@ namespace SupportClasses
     {
 
         DispatcherTimer timer = new DispatcherTimer(); // таймер
-        EmailSendServiceClass emailSender ; // экземпляр класса, отвечающего за отправку писем
+        EmailSendService emailSender ; // экземпляр класса, отвечающего за отправку писем
         DateTime dtSend ; // дата и время отправки
         IQueryable<Recepient> emails ; // коллекция email'ов адресатов
                                         /// <summary>
@@ -37,7 +38,7 @@ namespace SupportClasses
         /// <param name="dtSend"></param>
         /// <param name="emailSender"></param>
         /// <param name="emails"></param>
-        public void SendEmails( DateTime dtSend, EmailSendServiceClass emailSender, IQueryable<Recepient> emails )
+        public void SendEmails( DateTime dtSend, EmailSendService emailSender, IQueryable<Recepient> emails )
         {
             this.emailSender = emailSender; // Экземпляр класса, отвечающего за отправку писем присваиваем
             this.dtSend = dtSend;
