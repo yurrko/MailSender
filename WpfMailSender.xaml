@@ -71,7 +71,11 @@
                             <TextBlock Text="Серверы" 
                                        VerticalAlignment="Center" 
                                        Margin="0,0,3,0"/>
-                            <ComboBox Width="150"/>
+                            <ComboBox Width="150"
+                                      Name="cbMailServerSelect"
+                                      ItemsSource="{x:Static s:MailServers.Servers}"
+                                      DisplayMemberPath="Name"
+                                      SelectedIndex="0"/>
                             <Button ToolTip="Добавить">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="media/add.png" Height="16"/>
@@ -157,7 +161,7 @@
             </TabItem>
             <TabItem Header="Редактор писем">
                 <Grid>
-                    <RichTextBox/>
+                    <RichTextBox Name="rtbMailBody"/>
                 </Grid>
             </TabItem>
         </TabControl>
