@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Denisevich_MailSender"
         xmlns:s="clr-namespace:SupportClasses;assembly=SupportClasses"
+        xmlns:w="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Почтовая рассылка" 
         Height="450" 
@@ -148,10 +149,16 @@
                                   Name="cldSchedulDateTimes"/>
                         <TextBlock Text="Время"/>
                         <TextBox Name="tbTimePicker"/>
+                        <w:TimePicker></w:TimePicker>
                         <Button Content="Запланировать"
                                 Click="Button_Click_Send_Later"/>
-                        <Button Content="Отправить немедленно"
-                                Click="Button_Click_Send_Now"/>
+                        <Button
+                                Click="Button_Click_Send_Now">
+                            <WrapPanel Height="20">
+                                <Image Source="media/letter.png"/>
+                                <TextBlock Text="Отправить немедленно"></TextBlock>
+                            </WrapPanel>
+                        </Button>
                     </StackPanel>
                     <GroupBox Grid.Column="1" Header="Список расписания">
                         <ItemsControl/>
