@@ -55,18 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SupportClasses\AppConfigClass.cs" />
-    <Compile Include="SupportClasses\DBClass.cs" />
-    <Compile Include="SupportClasses\EmailSendServiceClass.cs" />
     <Compile Include="ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SupportClasses\MyConst.cs" />
-    <Compile Include="SupportClasses\SchedulerClass.cs" />
     <Compile Include="SendCompleteDialog.xaml.cs">
       <DependentUpon>SendCompleteDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SupportClasses\CustomSmtpClient.cs" />
     <Page Include="ErrorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +115,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SupportClasses\SupportClasses.csproj">
+      <Project>{bd29a7de-3913-42ba-99d5-bf240fb33d35}</Project>
+      <Name>SupportClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\add.png" />
+    <Resource Include="Media\clock.png" />
+    <Resource Include="Media\edit.png" />
+    <Resource Include="Media\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

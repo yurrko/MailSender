@@ -4,7 +4,7 @@
              StartupUri="WpfMailSender.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
+            <!--<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/DavesGlossyControls/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
@@ -30,7 +30,7 @@
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
-            </Style>
+            </Style>-->
 
         </ResourceDictionary>
     </Application.Resources>

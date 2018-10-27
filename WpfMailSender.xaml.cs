@@ -1,5 +1,6 @@
-﻿using Denisevich_MailSender.SupportClasses;
+﻿using SupportClasses;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
@@ -15,36 +16,81 @@ namespace Denisevich_MailSender
         public WpfMailSender()
         {
             InitializeComponent();
-            mailer = new EmailSendServiceClass();
+            //mailer = new EmailSendServiceClass();
         }
 
-        private void SendButton_OnClick( object sender, RoutedEventArgs e )
+        //private void SendButton_OnClick( object sender, RoutedEventArgs e )
+        //{
+
+        //    var subject = string.IsNullOrWhiteSpace( TextBoxMailSubject.Text ) ? MyConst.MailSubject : TextBoxMailSubject.Text.ToString();
+        //    var mailBody = string.IsNullOrWhiteSpace( TextBoxMailBody.Text ) ? MyConst.MailBody : TextBoxMailBody.Text.ToString();
+
+        //    try
+        //    {
+
+        //        mailer.SendMailMessage( MyConst.MailSender, MyConst.AddressList,
+        //                                MyConst.Yandex.SmtpServer, MyConst.Yandex.Port,
+        //                                subject, mailBody, UserNameTextBox.Text,
+        //                                PasswordPasswordBox.SecurePassword );
+        //    }
+        //    catch ( Exception res )
+        //    {
+
+        //        var errorWindow = new ErrorWindow( res.Message )
+        //        {
+        //            Owner = this,
+        //        };
+        //        errorWindow.ShowDialog();
+        //    }
+        //}
+
+        private void OnExitClick( object Sender, RoutedEventArgs E )
         {
+            Close();
+        }
 
-            var subject = string.IsNullOrWhiteSpace( TextBoxMailSubject.Text ) ? MyConst.MailSubject : TextBoxMailSubject.Text.ToString();
-            var mailBody = string.IsNullOrWhiteSpace( TextBoxMailBody.Text ) ? MyConst.MailBody : TextBoxMailBody.Text.ToString();
+        private void GoToPlannerButton_OnClick( object Sender, RoutedEventArgs E )
+        {
+            MainTabControl.SelectedItem = TimePlannerTab;
+        }
 
-            var res = mailer.SendMailMessage( MyConst.MailSender, MyConst.AddressList,
-                MyConst.Yandex.SmtpServer, MyConst.Yandex.Port,
-                subject, mailBody,
-                UserNameTextBox.Text, PasswordPasswordBox.SecurePassword );
-
-            if ( res.Item1 )
+        private void Button_Click_Send_Now( object sender, RoutedEventArgs e )
+        {
+            string strLogin = cbSenderSelect.Text;
+            string strPassword = cbSenderSelect.SelectedValue.ToString();
+            if ( string.IsNullOrEmpty( strLogin ) )
             {
-                var dialog = new SendCompleteDialog( res.Item2 )
-                {
-                    Owner = this,
-                };
-                dialog.ShowDialog();
+                MessageBox.Show( "Выберите отправителя" );
+                return;
             }
-            else
+            if ( string.IsNullOrEmpty( strPassword ) )
             {
-                var errorWindow = new ErrorWindow( res.Item2 )
-                {
-                    Owner = this,
-                };
-                errorWindow.ShowDialog();
+                MessageBox.Show( "Укажите пароль отправителя" );
+                return;
             }
+            var emailSender = new EmailSendServiceClass( strLogin, strPassword );
+            emailSender.SendMailMessages( (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
+        }
+
+
+        private void Button_Click_Send_Later( object sender, RoutedEventArgs e )
+        {
+            SchedulerClass sc = new SchedulerClass();
+            TimeSpan tsSendTime = sc.GetSendTime( tbTimePicker.Text );
+            if ( tsSendTime == new TimeSpan() )
+            {
+                MessageBox.Show( "Некорректный формат даты" );
+                return;
+            }
+            DateTime dtSendDateTime = (cldSchedulDateTimes.SelectedDate ?? DateTime.Today).Add( tsSendTime );
+            if ( dtSendDateTime < DateTime.Now )
+            {
+                MessageBox.Show( "Дата и время отправки писем не могут быть раньше, чем настоящее время" );
+            return;
+            }
+            EmailSendServiceClass emailSender = new EmailSendServiceClass( cbSenderSelect.Text,
+            cbSenderSelect.SelectedValue.ToString() );
+            sc.SendEmails( dtSendDateTime, emailSender, (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
         }
     }
 }
