@@ -31,39 +31,39 @@ namespace Denisevich_MailSender
 
         private void Button_Click_Send_Now( object sender, RoutedEventArgs e )
         {
-            try
-            {
-                var selectedSender = cbSenderSelect.SelectedItem as Sender;
+            //try
+            //{
+            //    var selectedSender = cbSenderSelect.SelectedItem as Sender;
 
-                if ( selectedSender is null )
-                    throw new NullReferenceException( "Выбран некорректный объект" );
+            //    if ( selectedSender is null )
+            //        throw new NullReferenceException( "Выбран некорректный объект" );
 
-                var login = selectedSender.Name;
-                var password = selectedSender.Password;
+            //    var login = selectedSender.Name;
+            //    var password = selectedSender.Password;
 
-                var customSmtpClient = cbMailServerSelect.SelectedItem as CustomSmtpClient;
-                if ( customSmtpClient is null )
-                    throw new NullReferenceException( "Выбран некорректный объект" );
+            //    var customSmtpClient = cbMailServerSelect.SelectedItem as CustomSmtpClient;
+            //    if ( customSmtpClient is null )
+            //        throw new NullReferenceException( "Выбран некорректный объект" );
 
-                var body = new TextRange( rtbMailBody.Document.ContentStart, rtbMailBody.Document.ContentEnd );
+            //    var body = new TextRange( rtbMailBody.Document.ContentStart, rtbMailBody.Document.ContentEnd );
 
-                if ( string.IsNullOrWhiteSpace( body.Text ) )
-                {
-                    MainTabControl.SelectedIndex = 2;
-                    throw new NullReferenceException( "Текст письма пуст" );
-                }
+            //    if ( string.IsNullOrWhiteSpace( body.Text ) )
+            //    {
+            //        MainTabControl.SelectedIndex = 2;
+            //        throw new NullReferenceException( "Текст письма пуст" );
+            //    }
 
-                var emailSender = new EmailSendService( login, password, customSmtpClient, "", "" );
-                emailSender.SendMailMessages( (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
-            }
-            catch ( Exception ex )
-            {
-                var errorWindow = new ErrorWindow( ex.Message )
-                {
-                    Owner = this,
-                };
-                errorWindow.ShowDialog();
-            }
+            //    var emailSender = new EmailSendService( login, password, customSmtpClient, "", "" );
+            //    emailSender.SendMailMessages( (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
+            //}
+            //catch ( Exception ex )
+            //{
+            //    var errorWindow = new ErrorWindow( ex.Message )
+            //    {
+            //        Owner = this,
+            //    };
+            //    errorWindow.ShowDialog();
+            //}
         }
 
 
@@ -84,14 +84,14 @@ namespace Denisevich_MailSender
                 return;
             }
 
-            EmailSendService emailSender = new EmailSendService(
-                (cbSenderSelect.SelectedValue as Sender)?.Email,
-                (cbSenderSelect.SelectedValue as Sender)?.Password,
-                (cbMailServerSelect.SelectedValue as CustomSmtpClient),
-                "",""
-                );
+            //EmailSendService emailSender = new EmailSendService(
+            //    (cbSenderSelect.SelectedValue as Sender)?.Email,
+            //    (cbSenderSelect.SelectedValue as Sender)?.Password,
+            //    (cbMailServerSelect.SelectedValue as CustomSmtpClient),
+            //    "",""
+            //    );
 
-            sc.SendEmails( dtSendDateTime, emailSender, (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
+            //sc.SendEmails( dtSendDateTime, emailSender, (IQueryable<Recepient>)DataGridRecepients.ItemsSource );
         }
     }
 }

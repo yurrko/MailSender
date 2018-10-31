@@ -33,70 +33,22 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
-                            <TextBlock Text="Отправители" 
-                                       VerticalAlignment="Center" 
-                                       Margin="0,0,3,0"/>
-                            <ComboBox Width="150"
-                                      ItemsSource="{x:Static a:Senders.Items}"
-                                      SelectedIndex="0"
-                                      Name="cbSenderSelect">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="s:Sender">
-                                        <StackPanel>
-                                            <TextBlock>
-                                                Имя:<TextBlock Text="{Binding Name}"/>
-                                            </TextBlock>
-                                            <TextBlock>
-                                                eMail:<TextBlock Text="{Binding Email}"/>
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <Button ToolTip="Добавить отправителя">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="media/add.png" Height="16"/>
-                                    <TextBlock Text="Добавить"/>
-                                </StackPanel>
-                            </Button>
-                            <Button ToolTip="Удалить отправителя">
-                                <Image Height="16" Source="media/remove.png"/>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <Image Height="16" Source="media/edit.png"/>
-                            </Button>
+                            <local:CustomToolBar DisplayName="Отправитель"
+                                                 CbData="{x:Static a:Senders.Items}"
+                                                 ></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
-                            <TextBlock Text="Серверы" 
-                                       VerticalAlignment="Center" 
-                                       Margin="0,0,3,0"/>
-                            <ComboBox Width="150"
-                                      Name="cbMailServerSelect"
-                                      ItemsSource="{x:Static a:MailServers.Servers}"
-                                      DisplayMemberPath="Name"
-                                      SelectedIndex="0"/>
-                            <Button ToolTip="Добавить">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="media/add.png" Height="16"/>
-                                    <TextBlock Text="Добавить"/>
-                                </StackPanel>
-                            </Button>
-                            <Button ToolTip="Удалить отправителя">
-                                <Image Height="16" Source="media/remove.png"/>
-                            </Button>
-                            <Button ToolTip="Редактировать">
-                                <Image Height="16" Source="media/edit.png"/>
-                            </Button>
+                            <local:CustomToolBar DisplayName="Серверы"
+                                                 CbData="{x:Static a:MailServers.Servers}"></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="0" BandIndex="1">
                             <Button Click="GoToPlannerButton_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Height="16" Source="media/clock.png"/>
                                     <TextBlock Text="Перейти в планировщик"/>
-                                </StackPanel>
+                                </StackPanel>  
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
