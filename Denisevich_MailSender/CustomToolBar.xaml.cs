@@ -1,5 +1,6 @@
 ﻿using MailSendLibrary;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,72 +22,128 @@ namespace Denisevich_MailSender
     /// </summary>
     public partial class CustomToolBar : UserControl
     {
-        public event EventHandler OnAddButtonClick;
-        public event EventHandler OnEditButtonClick;
-        public event EventHandler OnDelButtonClick;
-
         public CustomToolBar()
         {
             InitializeComponent();
         }
 
-        private string displayName;
-        private object cbData;
+        #region ItemSource : object - Элементы коллекции
 
+        /// <summary>Элементы коллекции</summary>
+        public static readonly DependencyProperty ItemSourceProperty =
+            DependencyProperty.Register(
+                nameof( ItemSource ),
+                typeof( IEnumerable ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( IEnumerable ), OnItemSourcePropertyChanged ) );
+
+        private static void OnItemSourcePropertyChanged( DependencyObject D, DependencyPropertyChangedEventArgs E )
+        {
+
+        }
+
+        /// <summary>Элементы коллекции</summary>
+        public IEnumerable ItemSource
+        {
+            get => (IEnumerable)GetValue( ItemSourceProperty );
+            set => SetValue( ItemSourceProperty, value );
+        }
+
+        #endregion
+
+        #region CreateCommand : ICommand - Команда создания объекта
+
+        /// <summary>Команда создания объекта</summary>
+        public static readonly DependencyProperty CreateCommandProperty =
+            DependencyProperty.Register(
+                nameof( CreateCommand ),
+                typeof( ICommand ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( ICommand ) ) );
+
+        /// <summary>Команда создания объекта</summary>
+        public ICommand CreateCommand
+        {
+            get => (ICommand)GetValue( CreateCommandProperty );
+            set => SetValue( CreateCommandProperty, value );
+        }
+
+        #endregion
+
+        #region DeleteCommand : ICommand - Команда удаления объекта
+
+        /// <summary>Команда удаления объекта</summary>
+        public static readonly DependencyProperty DeleteCommandProperty =
+            DependencyProperty.Register(
+                nameof( DeleteCommand ),
+                typeof( ICommand ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( ICommand ) ) );
+
+        /// <summary>Команда удаления объекта</summary>
+        public ICommand DeleteCommand
+        {
+            get => (ICommand)GetValue( DeleteCommandProperty );
+            set => SetValue( DeleteCommandProperty, value );
+        }
+
+        #endregion
+
+        #region EditCommand : ICommand - Команда редактирования объекта
+
+        /// <summary>Команда редактирования объекта</summary>
+        public static readonly DependencyProperty EditCommandProperty =
+            DependencyProperty.Register(
+                nameof( EditCommand ),
+                typeof( ICommand ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( ICommand ) ) );
+
+        /// <summary>Команда редактирования объекта</summary>
+        public ICommand EditCommand
+        {
+            get => (ICommand)GetValue( EditCommandProperty );
+            set => SetValue( EditCommandProperty, value );
+        }
+
+        #endregion
+
+        #region DisplayName : string - Имя панели
+
+        /// <summary>Имя панели</summary>
+        public static readonly DependencyProperty DisplayNameProperty =
+            DependencyProperty.Register(
+                nameof( DisplayName ),
+                typeof( string ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( string ) ) );
+
+        /// <summary>Имя панели</summary>
         public string DisplayName
         {
-            get { return displayName; }
-            set
-            {
-                displayName = value;
-                tbDisName.Text = value;
-            }
+            get => (string)GetValue( DisplayNameProperty );
+            set => SetValue( DisplayNameProperty, value );
         }
 
-        public object CbData
+        #endregion
+
+        #region SelectionIndex : int - Индекс выбранного элемента
+
+        /// <summary>Индекс выбранного элемента</summary>
+        public static readonly DependencyProperty SelectionIndexProperty =
+            DependencyProperty.Register(
+                nameof( SelectionIndex ),
+                typeof( int ),
+                typeof( CustomToolBar ),
+                new PropertyMetadata( default( int ) ) );
+
+        /// <summary>Индекс выбранного элемента</summary>
+        public int SelectionIndex
         {
-            get
-            {
-                return cbData;
-            }
-            set
-            {
-                IEnumerable<Sender> sender = value as IEnumerable<Sender>;
-                if ( sender is null )
-                {
-                    IEnumerable<CustomSmtpClient> server = value as IEnumerable<CustomSmtpClient>;
-                    if (server is null )
-                    {
-                        throw new Exception( "Неверный тип" );
-                    }
-                    cbSenderSelect.ItemsSource = server;
-                    
-
-                }
-                else
-                {
-                    cbSenderSelect.ItemsSource = sender;
-                }
-            }
+            get => (int)GetValue( SelectionIndexProperty );
+            set => SetValue( SelectionIndexProperty, value );
         }
 
-        public object CurrentSelection { get; set; }
-        //public static DependencyProperty CustomDisplayNameProperty = DependencyProperty.Register( "CustomDisplayName", typeof( string ), typeof( CustomToolBar ) );
-        ////public string DataSource { get; set; } = "TestString";
-
-        private void btnAddClick( object sender, RoutedEventArgs e )
-        {
-            OnAddButtonClick?.Invoke( this, EventArgs.Empty );
-        }
-
-        private void btnEditClick( object sender, RoutedEventArgs e )
-        {
-            OnEditButtonClick?.Invoke( this, EventArgs.Empty );
-        }
-
-        private void btnDelClick( object sender, RoutedEventArgs e )
-        {
-            OnDelButtonClick?.Invoke( this, EventArgs.Empty );
-        }
+        #endregion
     }
 }

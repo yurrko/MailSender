@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfigClass.cs" />
+    <Compile Include="DataAccessServiceFromDb.cs" />
     <Compile Include="DBClass.cs" />
+    <Compile Include="IDataAccessService.cs" />
     <Compile Include="MyConst.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

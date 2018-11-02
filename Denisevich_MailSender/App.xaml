@@ -1,37 +1,14 @@
-﻿<Application x:Class="Denisevich_MailSender.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<Application x:Class="Denisevich_MailSender.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Denisevich_MailSender.ViewModel" 
+             d1p1:Ignorable="d" 
              StartupUri="WpfMailSender.xaml">
-    <Application.Resources>
+  <Application.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/DavesGlossyControls/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            
-            <Style TargetType="PasswordBox">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush EndPoint="0.498,0.328" StartPoint="0.498,-0.672">
-                            <GradientStop Color="#FF3B3B3B"/>
-                            <GradientStop Color="#FF000000" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Foreground" Value="#FFF"></Setter>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="Padding" Value="2"/>
-                <Setter Property="BorderBrush">
-                    <Setter.Value>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFA3AEB9" Offset="0"/>
-                            <GradientStop Color="#FF8399A9" Offset="0.375"/>
-                            <GradientStop Color="#FF718597" Offset="0.375"/>
-                            <GradientStop Color="#FF617584" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-            </Style>-->
-
-        </ResourceDictionary>
-    </Application.Resources>
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

@@ -3,56 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:a="clr-namespace:MailSendLibrary;assembly=MailSendLibrary"
              xmlns:local="clr-namespace:Denisevich_MailSender"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
-             xmlns:test="clr-namespace:Denisevich_MailSender.Properties"
              mc:Ignorable="d">
-    <WrapPanel>
-        <TextBlock x:Name="tbDisName"
-                   VerticalAlignment="Center" 
-                   Margin="0,0,3,0"/>
-        <ComboBox Width="150"
-                  SelectedIndex="0"
-                  Name="cbSenderSelect">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock>Имя:
-                            <TextBlock Text="{Binding Name}"/>
-                        </TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Button ToolTip="Добавить отправителя" 
-                Click="btnAddClick">
-            <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Height="16" Icon="PlusCircle" Foreground="Lime"/>
-                <TextBlock Text="Добавить"/>
-            </StackPanel>
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type fa:ImageAwesome}">
+                <Setter Property="Height" Value="16"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="2,0"/>
+            </Style>
+        </DockPanel.Resources>
+        <TextBlock DockPanel.Dock="Left" Text="{Binding Source=CustomToolBar, Path=DisplayName}" VerticalAlignment="Center"/>
+        <Button DockPanel.Dock="Right" 
+                Command="{Binding DeleteCommand}"
+                CommandParameter="{Binding SelectedItem, ElementName=CollectionView}">
+            <fa:ImageAwesome Icon="Remove" Foreground="Red"/>
         </Button>
-        <Button ToolTip="Удалить отправителя" 
-                Click="btnEditClick">
-            <fa:ImageAwesome Height="16" Icon="Edit" Foreground="Orange"/>
+        <Button DockPanel.Dock="Right" 
+                Command="{Binding EditCommand}"
+                CommandParameter="{Binding SelectedItem, ElementName=CollectionView}">
+            <fa:ImageAwesome Icon="Edit" Foreground="Orange"/>
         </Button>
-        <Button ToolTip="Редактировать"
-                Click="btnDelClick">
-            <fa:ImageAwesome Height="16" Icon="Remove" Foreground="Red"/>
+        <Button DockPanel.Dock="Right" 
+                Command="{Binding CreateCommand}"
+                CommandParameter="{Binding SelectedItem, ElementName=CollectionView}">
+            <fa:ImageAwesome Icon="PlusCircle" Foreground="Lime"/>
         </Button>
-    </WrapPanel>
+        <ComboBox Name="CollectionView" 
+                  ItemsSource="{Binding ItemSource}" 
+                  Margin="3,0"
+                  SelectedIndex="{Binding SelectionIndex}"/>
+    </DockPanel>
 </UserControl>
-<!--<ComboBox Width="150"
-                  ItemsSource="{x:Static a:Senders.Items}"
-                  SelectedIndex="0"
-                  Name="cbSenderSelect">
-    <ComboBox.ItemTemplate>
-        <DataTemplate DataType="a:Sender">
-            <StackPanel>
-                <TextBlock>Имя:
-                            <TextBlock Text="{Binding Name}"/>
-                        </TextBlock>
-            </StackPanel>
-        </DataTemplate>
-    </ComboBox.ItemTemplate>
-</ComboBox>-->

@@ -7,8 +7,10 @@
         xmlns:a="clr-namespace:MailSendLibrary;assembly=MailSendLibrary"
         xmlns:s="clr-namespace:SupportClasses;assembly=SupportClasses"
         xmlns:w="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:view="clr-namespace:Denisevich_MailSender.View"
         mc:Ignorable="d"
-        Title="Почтовая рассылка" 
+        DataContext="{Binding WpfMailSenderViewModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}"
         Height="450" 
         Width="800">
     <DockPanel LastChildFill="True">
@@ -36,19 +38,21 @@
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
                             <local:CustomToolBar DisplayName="Отправитель"
-                                                 CbData="{x:Static a:Senders.Items}"
+                                                 ItemSource="{x:Static a:Senders.Items}"
+                                                 Width="200"
                                                  ></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <local:CustomToolBar DisplayName="Серверы"
-                                                 CbData="{x:Static a:MailServers.Servers}"></local:CustomToolBar>
+                                                 ItemSource="{x:Static a:MailServers.Servers}"
+                                                 Width="200"></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="0" BandIndex="1">
                             <Button Click="GoToPlannerButton_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Height="16" Source="media/clock.png"/>
                                     <TextBlock Text="Перейти в планировщик"/>
-                                </StackPanel>  
+                                </StackPanel>
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
@@ -70,24 +74,21 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <GroupBox Grid.Row="1" Header="Группы">
-                        <GroupBox.Resources>
-                            <s:DbClass x:Key="DataBaseObject"/>
-                        </GroupBox.Resources>
-                        <DataGrid ItemsSource="{Binding Recepients, Source={StaticResource DataBaseObject}}" 
-                                  AutoGenerateColumns="False"
-                                  HorizontalGridLinesBrush="{x:Null}"
-                                  AlternatingRowBackground="LightBlue"
-                                  IsReadOnly="True"
-                                  Name="DataGridRecepients">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="#" Binding="{Binding Id}"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
-                                <DataGridTextColumn Header="Comment" Binding="{Binding Comment}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </GroupBox>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Header="Группы">
+                            <view:RecipientsView/>
+                        </GroupBox>
+                        <view:RecipientEditView Grid.Column="1"></view:RecipientEditView>
+                        <GridSplitter Grid.Column="1" 
+                                      VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Left" 
+                                      Width="3" 
+                                      Foreground="Transparent"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Планировщик" Name="TimePlannerTab">
