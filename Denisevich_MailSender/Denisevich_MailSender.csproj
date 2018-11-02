@@ -50,10 +50,6 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="MailSendLibrary, Version=1.0.1.1, Culture=neutral, PublicKeyToken=7767c6a07a5fdcb8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\MailSendLibrary\v4.0_1.0.1.1__7767c6a07a5fdcb8\MailSendLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -98,29 +94,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomToolBar.xaml.cs">
-      <DependentUpon>CustomToolBar.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="CustomToolBar.cs" />
     <Compile Include="ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyToolBar.xaml.cs">
-      <DependentUpon>MyToolBar.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Infrastructure\StringLengthValidationRule.cs" />
     <Compile Include="SendCompleteDialog.xaml.cs">
       <DependentUpon>SendCompleteDialog.xaml</DependentUpon>
     </Compile>
-    <Page Include="CustomToolBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ErrorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MyToolBar.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\RecipientEditView.xaml">
       <SubType>Designer</SubType>
@@ -192,17 +180,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MailSendLibrary\MailSendLibrary.csproj">
+      <Project>{c1897417-f1bc-4411-bd29-2c7ac0c26542}</Project>
+      <Name>MailSendLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SupportClasses\SupportClasses.csproj">
       <Project>{bd29a7de-3913-42ba-99d5-bf240fb33d35}</Project>
       <Name>SupportClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Media\add.png" />
-    <Resource Include="Media\clock.png" />
-    <Resource Include="Media\edit.png" />
-    <Resource Include="Media\remove.png" />
+    <Resource Include="media\add.png" />
+    <Resource Include="media\clock.png" />
+    <Resource Include="media\edit.png" />
+    <Resource Include="media\remove.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,5 +24,19 @@ namespace Denisevich_MailSender.View
         {
             InitializeComponent();
         }
+
+        private void OnRecepientID_ValidationError( object Sender, ValidationErrorEventArgs E )
+        {
+            if ( !( Sender is Control control ) ) return;
+            switch ( E.Action )
+            {
+                case ValidationErrorEventAction.Added:
+                    control.ToolTip = E.Error.ErrorContent.ToString();
+                    break;
+                case ValidationErrorEventAction.Removed:
+                    control.ToolTip = "";
+                    break;
+            }
+        }
     }
 }

@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MailSendLibrary, Version=1.0.1.1, Culture=neutral, PublicKeyToken=7767c6a07a5fdcb8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\MailSendLibrary\v4.0_1.0.1.1__7767c6a07a5fdcb8\MailSendLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailSendLibrary\MailSendLibrary.csproj">
+      <Project>{c1897417-f1bc-4411-bd29-2c7ac0c26542}</Project>
+      <Name>MailSendLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

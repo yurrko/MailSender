@@ -16,9 +16,12 @@ namespace MailSendLibrary
 
         public EmailSendService( string login, string password, CustomSmtpClient server, string body, string subject )
         {
-            (_login, _password, _smtpServer, _smtpPort, _body, _subject) =
+            (_login, _password, _smtpServer, _smtpPort, Body, Subject) =
                 (login, password, server.SmtpServer, server.Port, body, subject);
         }
+
+        public string Body { get => _body; set => _body = value; }
+        public string Subject { get => _subject; set => _subject = value; }
 
         public void SendMailMessage( string address )
         {
@@ -26,8 +29,8 @@ namespace MailSendLibrary
             {
                 using ( var email = new MailMessage( _login, address )
                 {
-                    Subject = _subject,
-                    Body = _body,
+                    Subject = Subject,
+                    Body = Body,
                     IsBodyHtml = false,
                 } )
                 {

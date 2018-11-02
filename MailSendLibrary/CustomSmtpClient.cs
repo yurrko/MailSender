@@ -24,5 +24,10 @@ namespace MailSendLibrary
             SmtpServer = smtpServer;
             Port = port;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

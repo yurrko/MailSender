@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Recipient.cs" />
     <Compile Include="Senders.cs" />
   </ItemGroup>
   <ItemGroup>

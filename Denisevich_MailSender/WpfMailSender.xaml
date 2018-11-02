@@ -39,13 +39,13 @@
                         <ToolBar>
                             <local:CustomToolBar DisplayName="Отправитель"
                                                  ItemSource="{x:Static a:Senders.Items}"
-                                                 Width="200"
+                                                 Width="300"
                                                  ></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <local:CustomToolBar DisplayName="Серверы"
                                                  ItemSource="{x:Static a:MailServers.Servers}"
-                                                 Width="200"></local:CustomToolBar>
+                                                 Width="300"></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="0" BandIndex="1">
                             <Button Click="GoToPlannerButton_OnClick">

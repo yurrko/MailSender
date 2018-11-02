@@ -1,5 +1,4 @@
-﻿using MailSendLibrary;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +16,8 @@ using System.Windows.Shapes;
 
 namespace Denisevich_MailSender
 {
-    /// <summary>
-    /// Логика взаимодействия для CustomToolBar.xaml
-    /// </summary>
-    public partial class CustomToolBar : UserControl
+   public class CustomToolBar : Control
     {
-        public CustomToolBar()
-        {
-            InitializeComponent();
-        }
 
         #region ItemSource : object - Элементы коллекции
 
@@ -145,5 +137,10 @@ namespace Denisevich_MailSender
         }
 
         #endregion
+
+        static CustomToolBar()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomToolBar), new FrameworkPropertyMetadata(typeof(CustomToolBar)));
+        }
     }
 }
