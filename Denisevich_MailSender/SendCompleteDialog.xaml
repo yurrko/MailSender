@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Denisevich_MailSender"
         mc:Ignorable="d"
-        Title="SendCompleteDialog" Height="250" Width="500" 
+        Title="SendCompleteDialog" Height="125" Width="300" 
         ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="LabelMessageSendResult" Content="Почта отправлена" Margin="185,74,207.6,0" Height="26" VerticalAlignment="Top" >
+        <Label x:Name="LabelMessageSendResult" 
+               Content="Почта отправлена" 
+               Height="26"
+               Margin="0 20 0 0"
+               VerticalAlignment="Top"
+               HorizontalContentAlignment="Center">
             <Label.Effect>
                 <DropShadowEffect/>
             </Label.Effect>
         </Label>
-        <Button Content="Ok" Margin="225,0,208,50" VerticalAlignment="Bottom" Click="OkButton_OnClick"/>
+        <Button Content="Ok"
+                VerticalAlignment="Bottom" 
+                Click="OkButton_OnClick" 
+                Height="25"
+                Width="100"
+                Margin="0 0 0 10"/>
 
     </Grid>
 </Window>

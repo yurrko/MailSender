@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Denisevich_MailSender.SupportClasses
+namespace SupportClasses
 {
     public class AppConfigClass
     {

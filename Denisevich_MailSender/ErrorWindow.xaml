@@ -7,17 +7,18 @@
         mc:Ignorable="d"
         Title="ErrorWindow" Height="300" Width="600">
     <Grid>
-        <StackPanel>
-            <TextBlock x:Name="ErrorMessageTextBlock"
-                       Margin="50 20 50 20"
-                       Height="200" 
+        <StackPanel Orientation="Vertical">
+            <Label x:Name="ErrorMessageTextBlock"
+                       Margin="50,20,49.6,20"
+                       Height="200"
                        FontSize="16" 
-                       Foreground="Red"></TextBlock>
+                       Foreground="Red"></Label>
             <Button HorizontalAlignment="Center" 
-                VerticalAlignment="Center"
-                Width="100"
-                Height="20"
-                Content="Ok" Click="Button_Click_OK_Event"></Button>
+                    VerticalAlignment="Center"
+                    Width="100"
+                    Height="25"
+                    Content="Ok"
+                    Click="Button_Click_OK_Event"></Button>
         </StackPanel>
     </Grid>
 </Window>
