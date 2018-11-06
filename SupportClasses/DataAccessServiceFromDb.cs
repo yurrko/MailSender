@@ -6,15 +6,11 @@ namespace SupportClasses
 {
     public class DataAccessServiceFromDb : IDataAccessService
     {
-        private RecepientsDataContext _dataContext;
-        private SendersDataContext _sendersDataContext;
-        private CustomSmtpClientsDataContext _customSmtpClientsDataContext;
+        private MyMailDataContext _dataContext;
 
         public DataAccessServiceFromDb()
         {
-            _dataContext = new RecepientsDataContext();
-            _sendersDataContext = new SendersDataContext();
-            _customSmtpClientsDataContext = new CustomSmtpClientsDataContext();
+            _dataContext = new MyMailDataContext();
         }
 
         public ObservableCollection<Recepient> GetRecepients()
@@ -31,25 +27,25 @@ namespace SupportClasses
 
         public ObservableCollection<Sender> GetSenders()
         {
-            return new ObservableCollection<Sender>( _sendersDataContext.Sender.ToArray() );
+            return new ObservableCollection<Sender>( _dataContext.Sender.ToArray() );
         }
 
         public int CreateSender( Sender sender )
         {
-            _dataContext.Recepient.InsertOnSubmit( recipient );
+            _dataContext.Sender.InsertOnSubmit( sender );
             _dataContext.SubmitChanges();
-            return recipient.Id;
+            return sender.Id;
         }
 
         public ObservableCollection<CustomSmtpClient> GetCustomSmtpClients()
         {
-            return new ObservableCollection<CustomSmtpClient>( _customSmtpClientsDataContext.CustomSmtpClient.ToArray() );
+            return new ObservableCollection<CustomSmtpClient>( _dataContext.CustomSmtpClient.ToArray() );
         }
 
         public int CreateCustomSmtpClients( CustomSmtpClient customSmtpClient )
         {
-            _customSmtpClientsDataContext.CustomSmtpClient.InsertOnSubmit(customSmtpClient);
-            _customSmtpClientsDataContext.SubmitChanges();
+            _dataContext.CustomSmtpClient.InsertOnSubmit(customSmtpClient);
+            _dataContext.SubmitChanges();
             return customSmtpClient.Id;
         }
     }

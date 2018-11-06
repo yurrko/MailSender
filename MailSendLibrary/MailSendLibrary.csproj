@@ -52,65 +52,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomSmtpClients.designer.cs">
+    <Compile Include="CustomSmtpClient.cs" />
+    <Compile Include="EmailSendServiceClass.cs" />
+    <Compile Include="MyMail.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustomSmtpClients.dbml</DependentUpon>
+      <DependentUpon>MyMail.dbml</DependentUpon>
     </Compile>
-    <Compile Include="EmailSendServiceClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Recepients.cs">
-      <DependentUpon>Recepients.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Recepients.designer.cs">
-      <DependentUpon>Recepients.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Recipient.cs" />
-    <Compile Include="Senders.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Senders.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Sender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="CustomSmtpClients.dbml">
+    <None Include="MailSendService.snk" />
+    <None Include="MyMail.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>CustomSmtpClients.designer.cs</LastGenOutput>
+      <LastGenOutput>MyMail.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CustomSmtpClients.dbml.layout">
-      <DependentUpon>CustomSmtpClients.dbml</DependentUpon>
+    <None Include="MyMail.dbml.layout">
+      <DependentUpon>MyMail.dbml</DependentUpon>
     </None>
-    <None Include="MailSendService.snk" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Recepients.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Recepients.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Senders.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Senders.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Senders.dbml.layout">
-      <DependentUpon>Senders.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Recepients.dbml.layout">
-      <DependentUpon>Recepients.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

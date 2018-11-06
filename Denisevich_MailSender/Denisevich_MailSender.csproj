@@ -118,6 +118,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SenderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WpfMailSender.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +138,9 @@
     </Compile>
     <Compile Include="View\RecipientsView.xaml.cs">
       <DependentUpon>RecipientsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SenderView.xaml.cs">
+      <DependentUpon>SenderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WpfMailSender.xaml.cs">
       <DependentUpon>WpfMailSender.xaml</DependentUpon>
@@ -180,6 +187,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="media\add.png" />
+    <Resource Include="media\clock.png" />
+    <Resource Include="media\edit.png" />
+    <Resource Include="media\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MailSendLibrary\MailSendLibrary.csproj">
       <Project>{c1897417-f1bc-4411-bd29-2c7ac0c26542}</Project>
       <Name>MailSendLibrary</Name>
@@ -188,12 +201,6 @@
       <Project>{bd29a7de-3913-42ba-99d5-bf240fb33d35}</Project>
       <Name>SupportClasses</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="media\add.png" />
-    <Resource Include="media\clock.png" />
-    <Resource Include="media\edit.png" />
-    <Resource Include="media\remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

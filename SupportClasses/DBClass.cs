@@ -9,8 +9,10 @@ namespace SupportClasses
 {
     public class DbClass
     {
-        private readonly RecepientsDataContext _recepients = new RecepientsDataContext();
+        private readonly MyMailDataContext _dataContext = new MyMailDataContext();
 
-        public IQueryable<Recepient> Recepients => _recepients.Recepient;
+        public IQueryable<Recepient> Recepients => _dataContext.Recepient;
+        public IQueryable<Sender> Senders => _dataContext.Sender;
+        public IQueryable<CustomSmtpClient> CustomSmtpClients => _dataContext.CustomSmtpClient;
     }
 }

@@ -26,7 +26,7 @@
             <MenuItem Header="Помощь"/>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <TextBlock>Готово!</TextBlock>
+            <view:SenderView></view:SenderView>
         </StatusBar>
         <TabControl Name="MainTabControl">
             <TabItem Header="Группа рассылки">
@@ -38,13 +38,15 @@
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
                             <local:CustomToolBar DisplayName="Отправитель"
-                                                 ItemSource="{x:Static a:Senders.Items}"
+                                                 ItemSource="{Binding Senders}"
+                                                 SelectionIndex="{Binding CurrentSender}"
                                                  Width="300"
+                                                 CreateCommand="{Binding CreateNewSender}"
                                                  ></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="1" BandIndex="0">
                             <local:CustomToolBar DisplayName="Серверы"
-                                                 ItemSource="{x:Static a:MailServers.Servers}"
+                                                 ItemSource="{Binding CustomSmtpClients}"
                                                  Width="300"></local:CustomToolBar>
                         </ToolBar>
                         <ToolBar Band="0" BandIndex="1">
@@ -108,7 +110,7 @@
                         <Button
                                 Click="Button_Click_Send_Now">
                             <WrapPanel Height="20">
-                                <Image Source="media/letter.png"/>
+                                <!--<Image Source="media/letter.png"/>-->
                                 <TextBlock Text="Отправить немедленно"></TextBlock>
                             </WrapPanel>
                         </Button>
