@@ -1,6 +1,7 @@
 ﻿using MailSendLibrary;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
@@ -13,16 +14,16 @@ namespace SupportClasses
     /// </summary>
     public class SchedulerClass
     {
+        DispatcherTimer _timer = new DispatcherTimer(); // таймер
+        EmailSendService _emailSender; // экземпляр класса, отвечающего за отправку писем
+        DateTime _dtSend; // дата и время отправки
+        ObservableCollection<Recepient> _emails; // коллекция email'ов адресатов
 
-        DispatcherTimer timer = new DispatcherTimer(); // таймер
-        EmailSendService emailSender; // экземпляр класса, отвечающего за отправку писем
-        DateTime dtSend; // дата и время отправки
-        IQueryable<Recepient> emails; // коллекция email'ов адресатов
-                                      /// <summary>
-                                      /// Методе который превращаем строку из текстбокса tbTimePicker в TimeSpan
-                                      /// </summary>
-                                      /// <param name="strSendTime"></param>
-                                      /// <returns></returns>
+        /// <summary>
+        /// Метод который превращаем строку из текстбокса tbTimePicker в TimeSpan
+        /// </summary>
+        /// <param name="strSendTime"></param>
+        /// <returns></returns>
         public TimeSpan GetSendTime( string strSendTime )
         {
             TimeSpan tsSendTime = new TimeSpan();
@@ -30,37 +31,36 @@ namespace SupportClasses
             {
                 tsSendTime = TimeSpan.Parse( strSendTime );
             }
-            catch { }
+            catch
+            {
+            }
+
             return tsSendTime;
         }
+
         /// <summary>
-        //// Непосредственно отправка писем
+        /// Непосредственно отправка писем
         /// </summary>
         /// <param name="dtSend"></param>
         /// <param name="emailSender"></param>
         /// <param name="emails"></param>
-        public void SendEmails( DateTime dtSend, EmailSendService emailSender, IQueryable<Recepient> emails )
+        public void SendEmails( DateTime dtSend, EmailSendService emailSender, ObservableCollection<Recepient> emails )
         {
-            this.emailSender = emailSender; // Экземпляр класса, отвечающего за отправку писем присваиваем
-            this.dtSend = dtSend;
-            this.emails = emails;
-            timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan( 0, 0, 1 );
-            timer.Start();
+            _emailSender = emailSender; // Экземпляр класса, отвечающего за отправку писем присваиваем
+            _dtSend = dtSend;
+            _emails = emails;
+            _timer.Tick += Timer_Tick;
+            _timer.Interval = new TimeSpan( 0, 0, 1 );
+            _timer.Start();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick( object sender, EventArgs e )
         {
-            if (dicDates.Count == 0)
+            if ( _dtSend.ToShortTimeString() == DateTime.Now.ToShortTimeString() )
             {
-                timer.Stop(); MessageBox.Show( "Письма отправлены." );
-            }
-            else if (dicDates.Keys.First<DateTime>().ToShortTimeString() == DateTime.Now.ToShortTimeString())
-            {
-                emailSender.Body = dicDates[dicDates.Keys.First<DateTime>()];
-                emailSender.Subject = $"Рассылка от {dicDates.Keys.First<DateTime>().ToShortTimeString()} ";
-                emailSender.SendMailMessages( emails );
-                dicDates.Remove( dicDates.Keys.First<DateTime>() );
+                _emailSender.SendMailMessages( _emails );
+                _timer.Stop();
+                MessageBox.Show( "Письма отправлены." );
             }
         }
 

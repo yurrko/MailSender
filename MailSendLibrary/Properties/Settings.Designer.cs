@@ -33,5 +33,16 @@ namespace MailSendLibrary.Properties {
                 return ((string)(this["SpamBaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SpamBase;Integrated Security=T" +
+            "rue;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
+        public string SpamBaseConnectionString1 {
+            get {
+                return ((string)(this["SpamBaseConnectionString1"]));
+            }
+        }
     }
 }

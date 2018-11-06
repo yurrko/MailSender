@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -51,7 +52,7 @@ namespace MailSendLibrary
             }
         }
 
-        public void SendMailMessages( IQueryable<Recepient> addressList )
+        public void SendMailMessages( ObservableCollection<Recepient> addressList )
         {
             foreach ( var address in addressList )
             {

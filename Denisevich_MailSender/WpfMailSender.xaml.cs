@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Documents;
+using Denisevich_MailSender.ViewModel;
 
 namespace Denisevich_MailSender
 {
@@ -31,6 +32,11 @@ namespace Denisevich_MailSender
 
         private void Button_Click_Send_Now( object sender, RoutedEventArgs e )
         {
+            //var locator = (ViewModelLocator)FindResource( "Locator" );
+            //var emailSender = new EmailSendService( login, password, customSmtpClient, "", "" );
+            //emailSender.SendMailMessages( locator.Main.Emails );
+
+
             //try
             //{
             //    var selectedSender = cbSenderSelect.SelectedItem as Sender;

@@ -12,5 +12,9 @@ namespace SupportClasses
     {
         ObservableCollection<Recepient> GetRecepients();
         int CreateRecipient( Recepient recipient );
+        ObservableCollection<Sender> GetSenders();
+        int CreateSender( Sender sender );
+        ObservableCollection<CustomSmtpClient> GetCustomSmtpClients();
+        int CreateCustomSmtpClients( CustomSmtpClient customSmtpClient );
     }
 }
